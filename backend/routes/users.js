@@ -12,6 +12,26 @@ import { registerSchema, loginSchema } from "../validation/users.validation.js";
 
 import secret_key from "../config/keys.js";
 
+const verifyToken = (req, res, next) => {
+  let token = req.header("auth-token").replace("Bearer ", "");
+  if (!token) {
+    return res.status(401).send({
+      message: "Access denied, no token provided.",
+    });
+  }
+
+  try {
+    const verifiedUser = jwt.verify(token, secret_key);
+    console.log(verifiedUser);
+    req.decoded = { user: verifiedUser };
+    next();
+  } catch (error) {
+    return res.status(400).send({
+      message: "Invalid token, failed to authenticate.",
+    });
+  }
+};
+
 // POST Request - Registro de Usuarios
 router.post("/register", async (req, res) => {
   try {
@@ -31,7 +51,7 @@ router.post("/register", async (req, res) => {
         });
       }
       res.status(200).json({
-        user: user,
+        user: filterUser(user),
         message: "Usuario registrado exitosamente.",
       });
     });
@@ -53,8 +73,6 @@ router.post("/login", async (req, res) => {
   // Form validation
   try {
     const user_data = await loginSchema.validateAsync(req.body);
-
-    console.log(user_data);
     //Find user by email
     let user = await User.findOne({ email: user_data.email });
     if (user) {
@@ -77,7 +95,7 @@ router.post("/login", async (req, res) => {
               res.status(200).json({
                 success: true,
                 token: "Bearer " + token,
-                user: user,
+                user: filterUser(user),
               });
             }
           );
@@ -104,4 +122,33 @@ router.post("/login", async (req, res) => {
     }
   }
 });
+
+// Get Request - Authenticate Token
+router.get("/auth", verifyToken, async (req, res) => {
+  try {
+    let user = await User.findOne({ _id: req.decoded.user.id });
+    if (user) {
+      res.status(200).json({
+        user: filterUser(user),
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({
+      message: error.message,
+    });
+  }
+});
+
+function filterUser(user) {
+  const { name, lastname, email, type_id, id_number, date } = user;
+  return {
+    name,
+    lastname,
+    email,
+    type_id,
+    id_number,
+    date,
+  };
+}
 export default router;

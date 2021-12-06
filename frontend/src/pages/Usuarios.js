@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Swal from 'sweetalert';
+import Swal from "sweetalert";
 
 export default class Roles extends Component {
   constructor(props) {
@@ -79,15 +79,13 @@ export default class Roles extends Component {
       rol: this.state.rol,
     };
 
-    axios
-      .post("http://localhost:4000/api/usuarioNuevo", usuarioNuevo)
-      .then((res) => console.log(res.data));
+    axios.post("http://localhost:4000/api/usuarioNuevo", usuarioNuevo).then((res) => console.log(res.data));
     Swal({
-            title: "Registro creado satisfactoriamente",
-            icon: "success",
-            button: "Aceptar"
-            })
-            
+      title: "Registro creado satisfactoriamente",
+      icon: "success",
+      button: "Aceptar",
+    });
+
     this.setState({
       nomusuario: "",
       contrasena: "",
@@ -102,62 +100,45 @@ export default class Roles extends Component {
     return (
       <div style={{ marginTop: 10, marginLeft: 300 }}>
         <h3 id="titulo">
-        <br></br>
+          <br></br>
           <b>Usuarios</b>
         </h3>
         <br></br>
         <form onSubmit={this.onSubmit}>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
                 <div className="form-group ">
                   <label id="nombrecampo">Usuario:</label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        name="Usuario"
-                        className="form-control my-2"
-                        value={this.state.nomusuario}
-                        onChange={this.onChangenomusuario}
-                      />
+                      <input type="text" name="Usuario" className="form-control my-2" value={this.state.nomusuario} onChange={this.onChangenomusuario} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-sm">
+              <div className="col-sm">
                 <div className="form-group">
                   <label id="nombrecampo">
                     <b>Contraseña</b>
                   </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        name="Contrasena"
-                        className="form-control"
-                        value={this.state.contrasena}
-                        onChange={this.onChangecontrasena}
-                      />
+                      <input type="text" name="Contrasena" className="form-control" value={this.state.contrasena} onChange={this.onChangecontrasena} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-sm">
+              <div className="col-sm">
                 <div className="form-group">
                   <label id="nombrecampo">
                     <b>Tipo de Identificación</b>
                   </label>
                   <div>
                     <div>
-                      <select
-                        class="form-select"
-                        name="TipoId"
-                        value={this.state.tipoid}
-                        onChange={this.onChangetipoid}
-                      >
+                      <select className="form-select" name="TipoId" value={this.state.tipoid} onChange={this.onChangetipoid}>
                         <option value="CC">Cédula de Ciudadanía</option>
                         <option value="PA">Pasaporte</option>
                         <option value="CE">Cedula de Extranjeria</option>
@@ -168,75 +149,53 @@ export default class Roles extends Component {
               </div>
               <div></div>
 
-              <div class="container">
-                <div class="row">
-                  <div class="col-sm">
+              <div className="container">
+                <div className="row">
+                  <div className="col-sm">
                     <div className="form-group">
                       <label id="nombrecampo">
                         <b>Identificación</b>
                       </label>
                       <div>
                         <div>
-                          <input
-                            type="text"
-                            name="Identificacion"
-                            className="form-control"
-                            value={this.state.identificacion}
-                            onChange={this.onChangeidentificacion}
-                          />
+                          <input type="text" name="Identificacion" className="form-control" value={this.state.identificacion} onChange={this.onChangeidentificacion} />
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-sm">
+                  <div className="col-sm">
                     <div className="form-group">
                       <label id="nombrecampo">
                         <b>Nombre Completo</b>
                       </label>
                       <div>
                         <div>
-                          <input
-                            type="text"
-                            name="Nombreusuario"
-                            className="form-control"
-                            value={this.state.nombreusuario}
-                            onChange={this.onChangenombreusuario}
-                          />
+                          <input type="text" name="Nombreusuario" className="form-control" value={this.state.nombreusuario} onChange={this.onChangenombreusuario} />
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-sm">
+                  <div className="col-sm">
                     <div className="form-group">
                       <label id="nombrecampo">
                         <b>Rol</b>
                       </label>
                       <div>
                         <div>
-                          <input
-                            type="text"
-                            name="Rol"
-                            className="form-select"
-                            value={this.state.rol}
-                            onChange={this.onChangerol}
-                          />
+                          <input type="text" name="Rol" className="form-select" value={this.state.rol} onChange={this.onChangerol} />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-             
+
               <br></br>
               <div className="form-group">
-              <br></br>
-                <input
-                  type="submit"
-                  value="Crear"
-                  className="btn btn-primary btn-sm"
-                />
+                <br></br>
+                <input type="submit" value="Crear" className="btn btn-primary btn-sm" />
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Swal from "sweetalert";
 //import { Col, Container } from "reactstrap";
 
 export default class Radicacion extends Component {
@@ -128,9 +129,12 @@ export default class Radicacion extends Component {
       estado: this.state.estado,
     };
 
-    axios
-      .post("http://localhost:4000/api/nueva-factura", nuevafactura)
-      .then((res) => console.log(res.data));
+    axios.post("http://localhost:4000/api/nueva-factura", nuevafactura).then((res) => console.log(res.data));
+    Swal({
+      title: "Factura radicada satisfactoriamente",
+      icon: "success",
+      button: "Aceptar",
+    });
 
     this.setState({
       noradicacion: "",
@@ -156,7 +160,6 @@ export default class Radicacion extends Component {
         </h1>
         <br></br>
         <form onSubmit={this.onSubmit}>
-
           <div class="container">
             <div class="row">
               <div class="col-sm">
@@ -164,12 +167,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Número de Radicación: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.noradicacion}
-                        onChange={this.onChangenoradicacion}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.noradicacion} onChange={this.onChangenoradicacion} />
                     </div>
                   </div>
                 </div>
@@ -180,12 +178,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Nit Ips: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.nitips}
-                        onChange={this.onChangenitips}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.nitips} onChange={this.onChangenitips} />
                     </div>
                   </div>
                 </div>
@@ -196,12 +189,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Prefijo</label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.prefijo}
-                        onChange={this.onChangeprefijo}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.prefijo} onChange={this.onChangeprefijo} />
                     </div>
                   </div>
                 </div>
@@ -216,12 +204,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">N° Factura: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.nofactura}
-                        onChange={this.onChangenofactura}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.nofactura} onChange={this.onChangenofactura} />
                     </div>
                   </div>
                 </div>
@@ -234,12 +217,7 @@ export default class Radicacion extends Component {
                   </label>
                   <div>
                     <div>
-                      <select
-                        class="form-select"
-                        name="Nivel"
-                        value={this.state.tipoid}
-                        onChange={this.onChangetipoid}
-                      >
+                      <select class="form-select" name="Nivel" value={this.state.tipoid} onChange={this.onChangetipoid}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -257,12 +235,7 @@ export default class Radicacion extends Component {
                   </label>
                   <div>
                     <div>
-                      <select
-                        class="form-select"
-                        name="TipoId"
-                        value={this.state.tipoid}
-                        onChange={this.onChangetipoid}
-                      >
+                      <select class="form-select" name="TipoId" value={this.state.tipoid} onChange={this.onChangetipoid}>
                         <option value="CC">Cédula de Ciudadanía</option>
                         <option value="PA">Pasaporte</option>
                         <option value="CE">Cedula de Extranjeria</option>
@@ -281,12 +254,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Id Paciente: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.idpaciente}
-                        onChange={this.onChangeidpaciente}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.idpaciente} onChange={this.onChangeidpaciente} />
                     </div>
                   </div>
                 </div>
@@ -297,12 +265,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Nombre Paciente : </label>
                   <div>
                     <div>
-                      <input
-                        type="texto"
-                        className="form-control my-2"
-                        value={this.state.nombrepaciente}
-                        onChange={this.onChangenombrepaciente}
-                      />
+                      <input type="texto" className="form-control my-2" value={this.state.nombrepaciente} onChange={this.onChangenombrepaciente} />
                     </div>
                   </div>
                 </div>
@@ -313,12 +276,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Fecha Factura </label>
                   <div>
                     <div>
-                      <input
-                        type="date"
-                        className="form-control my-2"
-                        value={this.state.fechafactura}
-                        onChange={this.onChangefechafactura}
-                      />
+                      <input type="date" className="form-control my-2" value={this.state.fechafactura} onChange={this.onChangefechafactura} />
                     </div>
                   </div>
                 </div>
@@ -333,12 +291,7 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Valor Factura: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.valorfactura}
-                        onChange={this.onChangevalorfactura}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.valorfactura} onChange={this.onChangevalorfactura} />
                     </div>
                   </div>
                 </div>
@@ -349,91 +302,71 @@ export default class Radicacion extends Component {
                   <label id="nombrecampo">Estado: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.estado}
-                        onChange={this.onChangestado}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.estado} onChange={this.onChangestado} />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-        
 
             <br></br>
             <div className="form-group">
-              <input
-                type="submit"
-                value="Radicar Factura"
-                className="btn btn-primary btn-sm"
-              />
+              <input type="submit" value="Radicar Factura" className="btn btn-primary btn-sm" />
             </div>
           </div>
         </form>
+        {/*
+        <Container>
+          <Col sm="6">
+            <h4>Facturas Radicadas</h4>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>No. radicación</th>
+                  <th>Nit Ips</th>
+                  <th>Prefijo</th>
+                  <th>No. factura</th>
+                  <th>Nivel</th>
+                  <th>Tipo id</th>
+                  <th>Id paciente</th>
+                  <th>Nombre paciente</th>
+                  <th>Fecha Factura</th>
+                  <th>Valor Factura</th>
+                  <th>Radicar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.factura.map((factura) => {
+                  return (
+                    <tr key={factura._id}>
+                      <td>{factura.noradicacion}</td>
+                      <td>{factura.nit}</td>
+                      <td>{factura.prefijo}</td>
+                      <td>{factura.nofacura}</td>
+                      <td>{factura.nivel}</td>
+                      <td>{factura.tipoid}</td>
+                      <td>{factura.idpaciente}</td>
+                      <td>{factura.nombrepaciente}</td>
+                      <td>{factura.fechafactura}</td>
+                      <td>{factura.valorfactura}</td>
+                      <td>{factura.estado}</td>
+                      <td>
+                        <button onClick={() => this.editfactura(factura._id)} type="button" className="btn btn-info">
+                          Editar
+                        </button>
+                        <button onClick={() => this.deletefactura(factura._id)} type="button" className="btn btn-danger">
+                          Borrar
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </Col>
+        </Container>*/}
       </div>
     );
   }
 }
-/*
-     // <Container>
-        <Col sm="6">        
-          <h4>Facturas Radicadas</h4>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>No. radicación</th>
-                <th>Nit Ips</th>
-                <th>Prefijo</th>
-                <th>No. factura</th>
-                <th>Nivel</th>
-                <th>Tipo id</th>
-                <th>Id paciente</th>
-                <th>Nombre paciente</th>
-                <th>Fecha Factura</th>
-                <th>Valor Factura</th>
-                <th>Radicar</th>                
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.factura.map((factura) => {
-                return (
-                  <tr key={factura._id}>
-                    <td>{factura.noradicacion}</td>
-                    <td>{factura.nit}</td>
-                    <td>{factura.prefijo}</td>
-                    <td>{factura.nofacura}</td>
-                    <td>{factura.nivel}</td>
-                    <td>{factura.tipoid}</td>
-                    <td>{factura.idpaciente}</td>
-                    <td>{factura.nombrepaciente}</td>
-                    <td>{factura.fechafactura}</td>
-                    <td>{factura.valorfactura}</td>
-                    <td>{factura.estado}</td>
-                    <td>
-                      <button
-                        onClick={() => this.editfactura(factura._id)}
-                        type="button"
-                        className="btn btn-info"
-                      >
-                        Editar
-                      </button>
-                      <button
-                        onClick={() => this.deletefactura(factura._id)}
-                        type="button"
-                        className="btn btn-danger"
-                      >
-                        Borrar
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        //</Col>
-      //</Container>
-    
-  */

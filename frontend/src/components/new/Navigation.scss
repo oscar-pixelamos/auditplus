@@ -11,15 +11,19 @@
   }
 
   #sidebar {
-    background: #01045e;
-    width: 250px;
+    background: #090b44;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: fixed;
+    margin-top: 50px;
     left: 0;
     top: 0;
     transition: 350ms;
     z-index: 10;
+
+    button {
+      background-color: #090b44;
+    }
   }
 }

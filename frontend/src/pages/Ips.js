@@ -87,9 +87,7 @@ export default class Ips extends Component {
       telcontacto: this.state.telcontacto,
     };
 
-    axios
-      .post("http://localhost:4000/api/nueva-ips", nuevaips)
-      .then((res) => console.log(res.data));
+    axios.post("http://localhost:4000/api/nueva-ips", nuevaips).then((res) => console.log(res.data));
 
     this.setState({
       nitips: "",
@@ -108,132 +106,89 @@ export default class Ips extends Component {
         <h3 id="titulo">Ips</h3>
         <br></br>
         <form onSubmit={this.onSubmit}>
-
-          <div class="container">
-            <div class="row">
-
-              <div class="col-sm">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm">
                 <div className="form-group  ">
                   <label id="nombrecampo">Nit: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.nitips}
-                        onChange={this.onChangenitips}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.nitips} onChange={this.onChangenitips} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-sm">
+              <div className="col-sm">
                 <div className="form-group  ">
                   <label id="nombrecampo">Razón Social: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.nombreips}
-                        onChange={this.onChangenombreips}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.nombreips} onChange={this.onChangenombreips} />
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div class="col-sm">
+              <div className="col-sm">
                 <div className="form-group  ">
                   <label id="nombrecampo">Dirección: </label>
                   <div>
                     <div>
-                      <input
-                        type="text"
-                        className="form-control my-2"
-                        value={this.state.direccionips}
-                        onChange={this.onChangedireccionips}
-                      />
+                      <input type="text" className="form-control my-2" value={this.state.direccionips} onChange={this.onChangedireccionips} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-sm">
+                <div className="form-group  ">
+                  <label id="nombrecampo">Teléfono: </label>
+                  <div>
+                    <div>
+                      <input type="text" className="form-control my-2" value={this.state.telips} onChange={this.onChangetelips} />
                     </div>
                   </div>
                 </div>
               </div>
 
-            </div>
-
-            <div class="row">
-
-              <div class="col-sm">
+              <div className="col-sm">
                 <div className="form-group  ">
-                <label id="nombrecampo">Teléfono: </label>
-                <div>
-                <div>
-                  <input
-                    type="text"
-                    className="form-control my-2"
-                    value={this.state.telips}
-                    onChange={this.onChangetelips}
-                  />
+                  <label id="nombrecampo">Web : </label>
+                  <div>
+                    <div>
+                      <input type="text" className="form-control my-2" value={this.state.webips} onChange={this.onChangewebips} />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            </div>
 
-            <div class="col-sm">
-            <div className="form-group  ">
-              <label id="nombrecampo">Web : </label>
-              <div>
-                <div>
-                  <input
-                    type="text"
-                    className="form-control my-2"
-                    value={this.state.webips}
-                    onChange={this.onChangewebips}
-                  />
+              <div className="col-sm">
+                <div className="form-group  ">
+                  <label id="nombrecampo">Nombre de Contacto </label>
+                  <div>
+                    <div>
+                      <input type="text" className="form-control my-2" value={this.state.contacto} onChange={this.onChangecontacto} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            </div>
-
-            <div class="col-sm">
-            <div className="form-group  ">
-              <label id="nombrecampo">Nombre de Contacto </label>
-              <div>
-                <div>
-                  <input
-                    type="text"
-                    className="form-control my-2"
-                    value={this.state.contacto}
-                    onChange={this.onChangecontacto}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
 
             <div className="form-group  ">
               <label id="nombrecampo">Teléfono de Contacto: </label>
-              <div class="row g-4">
-                <div class="col-sm-3">
-                  <input
-                    type="text"
-                    className="form-control my-2"
-                    value={this.state.telcontacto}
-                    onChange={this.onChangetelcontacto}
-                  />
+              <div className="row g-4">
+                <div className="col-sm-3">
+                  <input type="text" className="form-control my-2" value={this.state.telcontacto} onChange={this.onChangetelcontacto} />
                 </div>
               </div>
             </div>
 
             <br></br>
             <div className="form-group">
-              <input
-                type="submit"
-                value="Crear"
-                className="btn btn-primary btn-sm"
-              />
+              <input type="submit" value="Crear" className="btn btn-primary btn-sm" />
             </div>
           </div>
         </form>

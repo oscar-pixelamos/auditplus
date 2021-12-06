@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Swal from "sweetalert";
 import { Form, FormGroup, Input, Label, Button } from "reactstrap";
 import "./Forms.scss";
 
@@ -29,18 +30,34 @@ class LoginForm extends React.Component {
 
   onSubmit(event) {
     this.onLogin();
-    this.resetForm();
     event.preventDefault();
   }
 
   onLogin() {
+    console.log("Entro");//console.log(JSON.stringify(this.state));
     axios
       .post("http://localhost:4000/api/users/login", {
         email: this.state.email,
         password: this.state.password,
       })
       .then((res) => {
-        this.props.history.push("/home");
+        const { token, user } = res.data;
+        sessionStorage.setItem("authToken", token);
+        sessionStorage.setItem("user", JSON.stringify(user));
+        Swal({
+          title: `¡Bienvenido! ${res.data.user.name}`,
+          icon: "success",
+          button: "Aceptar",
+        });
+        window.location.reload();
+      }).catch((error)=>{
+        console.log(JSON.stringify(error));
+        Swal({
+          title: `¡Lo sentimos!`,
+          text: `${error.response.data.message}`,
+          icon: "error",
+          button: "Aceptar",
+        });
       });
   }
 
@@ -58,11 +75,11 @@ class LoginForm extends React.Component {
         <Form id="login-form" onSubmit={this.onSubmit}>
           <FormGroup>
             <Label for="email">Correo de Usuario</Label>
-            <Input id="email" type="text" placeholder="Ingresa tu correo electrónico" onChange={this.onChangeEmail} autoComplete="email" />
+            <Input id="email" type="text" placeholder="Ingresa tu correo electrónico" onChange={this.onChangeEmail}  autoComplete="nope" />
           </FormGroup>
           <FormGroup>
             <Label for="password">Password</Label>
-            <Input id="password" type="password" name="password" placeholder="Ingresa tu contraseña" onChange={this.onChangePassword} autoComplete="password" />
+            <Input id="password" type="password" name="password" placeholder="Ingresa tu contraseña" onChange={this.onChangePassword} autoComplete="new-password" />
           </FormGroup>
           <Button color="primary" className="align-self-center">
             Enviar

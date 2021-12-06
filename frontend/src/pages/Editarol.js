@@ -17,7 +17,7 @@ export default class EditRol extends Component {
 }
 
 componentDidMount() {
-    axios.get('http://localhost:3000/api/:_id' + this.props.match.params.id)
+    axios.get('http://localhost:4000/api/:_id' + this.props.match.params.id)
     .then(res => {
         this.setState({
             codrol: res.data.name,
