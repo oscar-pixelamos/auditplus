@@ -34,7 +34,6 @@ class LoginForm extends React.Component {
   }
 
   onLogin() {
-    console.log("Entro");//console.log(JSON.stringify(this.state));
     axios
       .post("http://localhost:4000/api/users/login", {
         email: this.state.email,

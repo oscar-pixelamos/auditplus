@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 import Swal from "sweetalert";
 
-export default class contratos extends Component {
+class Contratos extends React.Component {
   constructor(props) {
     super(props);
     this.onChangecodcontratos = this.onChangecodcontratos.bind(this);
@@ -191,3 +191,5 @@ export default class contratos extends Component {
     );
   }
 }
+
+export default Contratos;
