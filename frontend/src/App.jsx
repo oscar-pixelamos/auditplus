@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./components/new/Sidebar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Home from "./pages/Home";
 import Parametrizacion from "./pages/Parametrizacion";
@@ -40,7 +40,8 @@ class App extends React.Component {
           this.setState({ isLoggedIn: true, user: res.data.user });
         }
       })
-      .catch(({ response }) => {
+      .catch((error) => {
+        console.log(error);
         if (this.state.isLoggedIn) {
           this.setState({ isLoggedIn: false, user: {} });
         }
@@ -66,22 +67,22 @@ class App extends React.Component {
     return (
       <Router>
         <Sidebar />
-        <Switch>
-          <Route path="/" exact component={this.state.isLoggedIn ? Home : Login} />
-          <Route path="/parametrizacion" exact component={this.state.isLoggedIn ? Parametrizacion : Login} />
-          <Route path="/registro" exact component={this.state.isLoggedIn ? Registro : Login} />
-          <Route path="/parametrizacion/roles" exact component={this.state.isLoggedIn ? Roles : Login} />
-          <Route path="/parametrizacion/usuarios" exact component={this.state.isLoggedIn ? Usuarios : Login} />
-          <Route path="/parametrizacion/tipocontrato" exact component={this.state.isLoggedIn ? Tipocontrato : Login} />
-          <Route path="/parametrizacion/ips" exact component={this.state.isLoggedIn ? Ips : Login} />
-          <Route path="/parametrizacion/tipodevolucion" exact component={this.state.isLoggedIn ? Tipodevolucion : Login} />
-          <Route path="/contratos" exact component={this.state.isLoggedIn ? Contratos : Login} />
-          <Route path="/radicacion" exact component={this.state.isLoggedIn ? Radicacion : Login} />
-          <Route path="/trazabilidad" exact component={this.state.isLoggedIn ? Trazabilidad : Login} />
-          <Route path="/reportes" exact component={this.state.isLoggedIn ? Reportes : Login} />
-          <Route path="/soporte" exact component={this.state.isLoggedIn ? Soporte : Login} />
-          <Route path="/modificaroles" exact component={this.state.isLoggedIn ? Modificaroles : Login} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={this.state.isLoggedIn ? <Home /> : <Login />} />
+          <Route path="/parametrizacion" element={this.state.isLoggedIn ? <Parametrizacion /> : <Login />} />
+          <Route path="/registro" element={this.state.isLoggedIn ? <Registro /> : <Login />}  />
+          <Route path="/parametrizacion/roles"  element={this.state.isLoggedIn ? <Roles /> : <Login />} />
+          <Route path="/parametrizacion/usuarios" element={this.state.isLoggedIn ? <Usuarios /> : <Login />} />
+          <Route path="/parametrizacion/tipocontrato"  element={this.state.isLoggedIn ? <Tipocontrato /> : <Login />}  />
+          <Route path="/parametrizacion/ips"  element={this.state.isLoggedIn ? <Ips /> : <Login />} />
+          <Route path="/parametrizacion/tipodevolucion"  element={this.state.isLoggedIn ? <Tipodevolucion /> : <Login />}  />
+          <Route path="/contratos"  element={this.state.isLoggedIn ? <Contratos /> : <Login />} />
+          <Route path="/radicacion"  element={this.state.isLoggedIn ? <Radicacion /> : <Login />}  />
+          <Route path="/trazabilidad" element={this.state.isLoggedIn ? <Trazabilidad /> : <Login />} />
+          <Route path="/reportes" element={this.state.isLoggedIn ? <Reportes /> : <Login />} />
+          <Route path="/soporte" element={this.state.isLoggedIn ? <Soporte /> : <Login />}  />
+          <Route path="/modificaroles" element={this.state.isLoggedIn ? <Modificaroles /> : <Login />}  />
+        </Routes>
       </Router>
     );
   }

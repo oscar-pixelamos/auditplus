@@ -5,7 +5,7 @@ import { HiMenu, HiX,HiUserCircle } from "react-icons/hi";
 import SubMenu from "../SubMenu";
 import { SidebarData } from "../SidebarData";
 import styled from "styled-components";
-
+import audit_logo from "../../assets/svg/audit-logo-white.svg";
 const SidebarWrap = styled.div`
   width: 100%;
 `;
@@ -33,7 +33,7 @@ class Sidebar extends React.Component {
         <button onClick={this.showSidebar}>{icon}</button>
         <div>
           <Link to="/" className="d-flex align-items-center justify-content-center">
-            <img src={require("../../assets/svg/audit-logo-white.svg")} width="128" alt="logo Audit" />
+            <img src={audit_logo} width="128" alt="logo Audit" />
           </Link>
         </div>
         <div>
